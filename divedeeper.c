@@ -11,6 +11,7 @@
 creature player = { .hlth = 20, .mana = 0, .strn = 3, .def = 3, .spd = 1, .wis = 3, .intl = 3, .name = "Player"};
 
 int main(){
+    gameIntro();
     int game_loop = 1; // allows game to not crash
     int dungeon_lvl = 0;
     srand(time(NULL));
@@ -77,11 +78,12 @@ int main(){
         
         //game over
         else if(player.hlth <= 0){
+            gameOutro();
             game_loop = 0; 
         }
         
     }
 
-
+    //End of game
     return 0;
 }

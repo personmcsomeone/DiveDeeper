@@ -21,5 +21,7 @@ typedef struct{
 creature getMonster();
 void funcStatusCheck( int playerHealth);
 int getAction();
+void gameIntro();
+void gameOutro();
 
 #endif //end inclsion guard

@@ -54,7 +54,7 @@ int getAction(creature player) {
     return actionNum;
 }
 
-void gameStartIntro(){
+void gameIntro(){
     for(int i = 0; i < 20; i++){
         printf("%c", 176); // light block
     }
@@ -67,8 +67,21 @@ void gameStartIntro(){
         printf("%c", 178); // darker block
     }
     printf("\n");
-    printf(
-        "You embark upon a deep dungeon,\n
-        seeking fame and glory,\n 
-        and decide to Dive Deeper.\n");
+    printf("You embark upon a deep dungeon,\n seeking fame and glory,\n and decide to Dive Deeper.\n");
+}
+
+void gameOutro(){
+    printf("You feel the life leave your body\n without seeing the sun again\n YOU HAVE DIED\n");
+    for(int i = 0; i < 20; i++){
+        printf("%c", 178); // darker block
+    }
+    printf("\n");
+    for(int i = 0; i < 20; i++){
+        printf("%c", 177); // medium block
+    }
+    printf("\n");
+    for(int i = 0; i < 20; i++){
+        printf("%c", 176); // light block
+    }
+    printf("\n");
 }
