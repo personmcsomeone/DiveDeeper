@@ -8,7 +8,7 @@
 #include "combatfunc.h"
 
 //starting player attributes TODO: make function to give player choice of starting loadout
-creature player = { .hlth = 20, .mana = 0, .strn = 3, .def = 3, .spd = 1, .wis = 3, .intl = 3, .name = "Player"};
+creature player = { .hlth = 30, .mana = 0, .strn = 3, .def = 3, .spd = 1, .wis = 3, .intl = 3, .name = "Player"};
 
 int main(){
     gameIntro();
@@ -19,8 +19,9 @@ int main(){
         int level_loop = 1;
         creature lvl_monster = getMonster();
         //int attack_order = 0; //1 for player, 0 for monster
+        monsterEncounter(dungeon_lvl ,lvl_monster.name);
         while(level_loop){
-            //player action
+            //player action 
             switch(getAction(player)){
                 case 1:{ //attack    
                     printf("You deal 5 damage. \n");
@@ -40,10 +41,16 @@ int main(){
                 }
             }
             
+            if(lvl_monster.hlth<= 0){
+                level_loop = 0;
+                break;
+            }
+
             //enemy action
             switch((rand() % 10)){
                 case 1:{
                     printf("The %s missed.\n", lvl_monster.name);
+                    break;
                 }
                 default:{
                     printf("The %s attacks for %d damage.\n", lvl_monster.name, lvl_monster.strn);

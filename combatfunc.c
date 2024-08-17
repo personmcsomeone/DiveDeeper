@@ -6,17 +6,9 @@
 #include <math.h>
 //self defined headers
 #include "combatfunc.h"
+#include "textfunc.h"
+//current numbers of monsters in the game UPDATE!!!
 #define MONSTERS 3
-/*typedef struct{
-    int hlth; //health
-    int mana; //total mana
-    int strn; //strength
-    int def; //defence stat
-    int spd; //speed stat
-    int wis; //wisdom stat
-    int intl; //intellegence stat
-    char* name; //creature name
-} creature;*/
 
 creature getMonster() {
     int rand_num = (rand() % MONSTERS) + 1;
@@ -33,12 +25,6 @@ creature getMonster() {
                 return zomb;
                 break;
     }
-
-}
-
-void funcStatusCheck(int playerHealth){
-    printf("Current Health: %d\n", playerHealth);
-    //TODO: Add additional spells/mana/equipment here
 }
 
 int getAction(creature player) {
@@ -52,36 +38,4 @@ int getAction(creature player) {
     }
     }while(actionNum > 3 || actionNum < 1);
     return actionNum;
-}
-
-void gameIntro(){
-    for(int i = 0; i < 20; i++){
-        printf("%c", 176); // light block
-    }
-    printf("\n");
-    for(int i = 0; i < 20; i++){
-        printf("%c", 177); // medium block
-    }
-    printf("\n");
-    for(int i = 0; i < 20; i++){
-        printf("%c", 178); // darker block
-    }
-    printf("\n");
-    printf("You embark upon a deep dungeon,\n seeking fame and glory,\n and decide to Dive Deeper.\n");
-}
-
-void gameOutro(){
-    printf("You feel the life leave your body\n without seeing the sun again\n YOU HAVE DIED\n");
-    for(int i = 0; i < 20; i++){
-        printf("%c", 178); // darker block
-    }
-    printf("\n");
-    for(int i = 0; i < 20; i++){
-        printf("%c", 177); // medium block
-    }
-    printf("\n");
-    for(int i = 0; i < 20; i++){
-        printf("%c", 176); // light block
-    }
-    printf("\n");
 }
