@@ -39,3 +39,53 @@ int getAction(creature player) {
     }while(actionNum > 3 || actionNum < 1);
     return actionNum;
 }
+
+void levelUp(creature* player){
+    int input = 0;
+    int crit = 0;
+    if((rand() % 35) == 0){
+        crit = 2;
+    } 
+    else{ 
+        crit = 0;
+    }
+    printf("str %d\n", player->strn);
+    printf("You survive another floor, choose how to level up:\n 1. Restore Health\n 2. Strength Up\n 3. Defense Up\n 4. Speed Up\n 5. Wisdom Up\n 6. Intellegence Up\n Input Selection (1-6): ");
+    scanf(" %d", &input);
+
+    switch(input){
+        case 2:{
+            player->strn += 1 + crit;
+            printf("You feel your muscles grow,\n+%d strength\n", 1 + crit);
+            break;
+        }
+        case 3:{
+            player->def += 1 + crit;
+            printf("You grow in fortitude,\n+%d defense\n", 1 + crit);
+            break;
+        }
+        case 4:{
+            player->spd += 1 + crit;
+            printf("You feel springier, ready to fight,\n+%d spped\n", 1 + crit);
+            break;
+        }
+        case 5:{
+            player->wis += 1 + crit;
+            printf("You understand the dungeon further,\n+%d wisdom\n", 1 + crit);
+            break;
+        }
+        case 6:{
+            player->intl += 1 + crit;
+            printf("You strategize for the next decent,\n+%d intellegence\n", 1 + crit);
+            break;
+        }
+        default:{
+            // " error: lvalue required as left operand of assignment"
+            //(((player->hlth + 15) >= 30 )? player->hlth = 30 : (player->hlth) = (player->hlth) + 15);
+            //temp fix, full health for all!
+            player->hlth = 30;
+            printf("You take a small rest and clean your wounds\n");
+        }
+    }
+    //free(lvlup);
+}

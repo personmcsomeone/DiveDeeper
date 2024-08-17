@@ -20,5 +20,5 @@ typedef struct{
 //------------------------------------------
 creature getMonster();
 int getAction();
-
+void levelUp(creature* player);
 #endif //end inclsion guard

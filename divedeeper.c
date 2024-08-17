@@ -6,11 +6,13 @@
 #include <math.h>
 //self defined headers
 #include "combatfunc.h"
+#include "textfunc.h"
 
 //starting player attributes TODO: make function to give player choice of starting loadout
 creature player = { .hlth = 30, .mana = 0, .strn = 3, .def = 3, .spd = 1, .wis = 3, .intl = 3, .name = "Player"};
 
 int main(){
+    Start:
     gameIntro();
     int game_loop = 1; // allows game to not crash
     int dungeon_lvl = 0;
@@ -71,6 +73,7 @@ int main(){
         if(lvl_monster.hlth <= 0 ){
             char confirm;
             printf("You have defeated the %s\nYou have %d health left\n", lvl_monster.name, player.hlth);
+            levelUp(&player);
             printf("Dive to Level: %d? (y/n) ", dungeon_lvl + 1);
             scanf(" %c", &confirm);
             if(confirm != 'n'){
@@ -90,7 +93,11 @@ int main(){
         }
         
     }
-
     //End of game
+    printf("New Game (1) or Close (0): ");
+    scanf(" ", &game_loop);
+    if(game_loop != 0){
+        goto Start;
+    }
     return 0;
 }

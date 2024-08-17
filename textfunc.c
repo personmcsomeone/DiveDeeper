@@ -25,15 +25,15 @@ void funcStatusCheck(int playerHealth){
 
 
 void gameIntro(){
-    for(int i = 0; i < 20; i++){
+    for(int i = 0; i < 40; i++){
         printf("%c", 176); // light block
     }
     printf("\n");
-    for(int i = 0; i < 20; i++){
+    for(int i = 0; i < 40; i++){
         printf("%c", 177); // medium block
     }
     printf("\n");
-    for(int i = 0; i < 20; i++){
+    for(int i = 0; i < 40; i++){
         printf("%c", 178); // darker block
     }
     printf("\n");
@@ -41,16 +41,16 @@ void gameIntro(){
 }
 
 void gameOutro(){
-    printf("You feel the life leave your body\n without seeing the sun again\n YOU HAVE DIED\n");
-    for(int i = 0; i < 20; i++){
+    printf("\nYou feel the life leave your body\n without seeing the sun again\n\n            YOU HAVE DIED\n\n");
+    for(int i = 0; i < 40; i++){
         printf("%c", 178); // darker block
     }
     printf("\n");
-    for(int i = 0; i < 20; i++){
+    for(int i = 0; i < 40; i++){
         printf("%c", 177); // medium block
     }
     printf("\n");
-    for(int i = 0; i < 20; i++){
+    for(int i = 0; i < 40; i++){
         printf("%c", 176); // light block
     }
     printf("\n");

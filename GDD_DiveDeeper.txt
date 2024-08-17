@@ -21,9 +21,9 @@ Game elements/mechanics to impliment:
 X   comabt 
 X   moving to next level
 X   text intro and outro
-    leveling system to improve stats
+X    leveling system to improve stats
     add additional monsters (10)
-    add speed stat based attack order --- Make combat phase its own function to stay within?
+>   add speed stat based attack order --- Make combat phase its own function to stay within?
     add spells
     let monsters do more than just attack/miss
     add more monsters (20-40)

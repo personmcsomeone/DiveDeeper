@@ -1,5 +1,5 @@
-#ifndef __STRUCT_DEF_H__
-#define __STRUCT_DEF_H__
+#ifndef __TEXT_FUNC_H__
+#define __TEXT_FUNC_H__
 
 //------------------------------------------
 // functions
