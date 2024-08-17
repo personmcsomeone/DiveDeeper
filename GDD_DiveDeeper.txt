@@ -1,0 +1,40 @@
+/////////////////////////////////////////
+GAME NAME: Dive Deeper
+/////////////////////////////////////////
+Intro:
+    Dungeon diver rougue style game.
+    Fight individual monster on  eat level and make it to the bottom of the dungeon.
+/////////////////////////////////////////
+Inspiration:
+    Fate: isometric game about game where you keep going lower into a dungeon
+    Text based games: While i dont have the ability to do a full text based adventure game,
+                    I want to mimic the feel on one and have cool cmputer art to accompany it
+    
+/////////////////////////////////////////
+Constant improvements:
+    debug
+    push to github
+    balance fighting, need to be abel to make it to level 30
+    write small story for it
+/////////////////////////////////////////
+Game elements/mechanics to impliment:
+X   comabt 
+X   moving to next level
+X   text intro and outro
+    leveling system to improve stats
+    add additional monsters (10)
+    add speed stat based attack order --- Make combat phase its own function to stay within?
+    add spells
+    let monsters do more than just attack/miss
+    add more monsters (20-40)
+    add boss/high level monsters 
+    make a function that checks what level of the dungeon you are on and returns a specific event
+    add chance events like shrines, merchants, other adventurers, skill buffs
+    GOLD
+    let player choose class to start the game, determine starting stats
+    Ascii art for creatures and events 
+        monsters
+        events
+        leveling us
+    hunger system? Have an additional problem to mitigate when diving Deeper
+/////////////////////////////////////////
