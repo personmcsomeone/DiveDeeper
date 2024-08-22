@@ -17,13 +17,18 @@ Constant improvements:
     balance fighting, need to be abel to make it to level 30
     write small story for it
 /////////////////////////////////////////
+BUGS LIST:
+    New game doesnt work
+/////////////////////////////////////////
 Game elements/mechanics to impliment:
 X   comabt 
 X   moving to next level
 X   text intro and outro
-X    leveling system to improve stats
-    add additional monsters (10)
->   add speed stat based attack order --- Make combat phase its own function to stay within?
+X   leveling system to improve stats
+X    add additional monsters (10)
+X   add speed stat based attack order --- Make combat phase its own function to stay within?
+        ^^^Needs testing wiht a faster monster^^^ works like before currently
+    make separate header for structs ony, no functions
     add spells
     let monsters do more than just attack/miss
     add more monsters (20-40)

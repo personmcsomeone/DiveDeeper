@@ -27,7 +27,7 @@ creature getMonster() {
         case 4: creature vamp = { .hlth = 10, .mana = 20, .strn = 4, .def = 0, .spd = 3, .wis = 5, .intl = 5, .name = "vampire"};
                 return vamp;
                 break;
-        case 5: creature rat = { .hlth = 10, .mana = 0, .strn = 2, .def = 4, .spd = 1, .wis = 0, .intl = 0, .name = "large rat"};
+        case 5: creature rat = { .hlth = 20, .mana = 0, .strn = 2, .def = 4, .spd = 1, .wis = 0, .intl = 0, .name = "large rat"};
                 return rat;
                 break;
         case 6: creature mage = { .hlth = 10, .mana = 50, .strn = 1, .def = 1, .spd = 1, .wis = 0, .intl = 0, .name = "rogue mage"};
@@ -36,7 +36,7 @@ creature getMonster() {
         case 7: creature theif = { .hlth = 9, .mana = 0, .strn = 2, .def = 0, .spd = 8, .wis = 0, .intl = 0, .name = "theif"};
                 return theif;
                 break;
-        case 8: creature skel = { .hlth = 15, .mana = 0, .strn = 8, .def = 1, .spd = 3, .wis = 0, .intl = 0, .name = "skeleton"};
+        case 8: creature skel = { .hlth = 15, .mana = 0, .strn = 8, .def = 1, .spd = 3, .wis = 0, .intl = 0, .name = "skel"};
                 return skel;
                 break;
         case 9: creature bslime = { .hlth = 12, .mana = 0, .strn = 3, .def = 1, .spd = 2, .wis = 5, .intl = 5, .name = "blue slime"};
@@ -49,136 +49,23 @@ creature getMonster() {
 }
 
 creature resetPlayer() {
-    creature player = { .hlth = 30, .mana = 0, .strn = 3, .def = 3, .spd = 3, .wis = 3, .intl = 3, .name = "Player"};
+    creature player = { .hlth = MAX_HEALTH, .mana = 0, .strn = 3, .def = 3, .spd = 3, .wis = 3, .intl = 3, .name = "Player"};
     return player;
-}
-
-creature copyPlayer(creature orig) {
-    creature copy = { .hlth = orig.hlth, .mana = orig.mana, .strn = orig.strn, .def = orig.def, .spd = orig.spd, .wis = orig.wis, .intl = orig.intl, .name = orig.name};
-    return copy;
 }
 
 int getAction(creature player) {
     int actionNum = 0;
     //print action statement
     do{
-    printf(" Actions:\n  1. Attack\n  2. Cast Spell\n  3. Do Nothing\n  4. See Status\n -----> ");
+    printf(" Actions:\n  1. Attack\n  2. Cast Heal\n  3. Do Nothing\n  4. See Status\n -----> ");
     scanf(" %d", &actionNum);
     if(actionNum == 4){
         funcStatusCheck(player);
     }
     }while(actionNum > 3 || actionNum < 1);
-    //cool spacing
-    for(int i = 0; i < 60; i++){
-        printf("%c", 176); // light block
-    }
-    printf("\n\n");
-    return actionNum;
-}
-/*
-int getSpell(creature player) {
-    int actionNum = 0;
-    //print action statement
-    do{
-        printf(" Choose Spell to Cast ----> ");
-        scanf(" %d", &actionNum);
-        
-        //return to menu input
-        if(actionNum == 0){
-            break;
-        }
-
-        //spell input
-        switch(actionNum){
-            case 1:{ //fireball
-                if(!(player.intl >= 4 && player.strn >= 4)){
-                    actionNum = 0;
-                    printf(" You do not have the requirements for that spell.\n");
-                }
-                break;
-            }
-            case 11:{ //small heal
-                break;
-            }
-            case 12:{ //shield shroud
-                if(!(player.intl >= 5 && player.def >= 5)){
-                    actionNum = 0;
-                    printf(" You do not have the requirements for that spell.\n");
-                }
-                break;
-            }
-            case 2:{ //magic missle
-                if(!(player.intl >= 5)){
-                    actionNum = 0;
-                    printf(" You do not have the requirements for that spell.\n");
-                }
-                break;
-            }
-            case 13:{ //stamina boost
-                if(!((player.intl >= 5 && player.def >= 5) && player.spd >= 4)){
-                    actionNum = 0;
-                    printf(" You do not have the requirements for that spell.\n");
-                }
-                break;
-            }
-            case 3:{ //flaming slash
-                if(!(player.intl >= 7 && player.strn >= 8)){
-                    actionNum = 0;
-                    printf(" You do not have the requirements for that spell.\n");
-                }
-                break;
-            }
-            case 14:{ //unrelent power
-                if(!((player.intl >= 7 && player.def >= 10) && player.wis >= 5)){
-                    actionNum = 0;
-                    printf(" You do not have the requirements for that spell.\n");
-                }
-                break;
-            }
-            case 22:{ //lightning
-                if(!(player.intl >= 8)){
-                    actionNum = 0;
-                    printf(" You do not have the requirements for that spell.\n");
-                }
-                break;
-            }
-            case 23:{ //spell denial
-                if(!(player.intl >= 8 && player.wis >= 8)){
-                    actionNum = 0;
-                    printf(" You do not have the requirements for that spell.\n");
-                }
-                break;
-            }
-            default:{
-                print(" Invalid Spell\n");
-            }
-        } //end of switch case
-    }while(actionNum == 0);
-
     return actionNum;
 }
 
-void castSpell(int input, creature* caster, creature* opponent){
-    int dmg = 0;
-    switch(input){
-        case 1:{ 
-            dmg = caster->intl + caster->strn - opponent.wis;
-            printf(" %s cast Fireball for %d damage\n", caster->name, dmg);
-            break;
-        }
-        case 2:{ 
-            caster->hlth += caster->wis;
-            printf(" %s heals for %d health\n", caster->name, caster->wis);
-            break;
-        }
-        case 1:{ 
-            dmg = caster->intl + caster->strn - opponent.wis;
-            printf(" %s cast Fireball for %d damage\n", caster->name, dmg);
-            break;
-        }        
-    }
-}
-*/
 void levelUp(creature* player){
     int input = 0;
     int crit = 0;
@@ -231,34 +118,31 @@ void levelUp(creature* player){
 
 void combatPhase(creature* enemy, creature* player){
     int firstActionPerformed = 0;
-    creature playerCpy = copyPlayer(*player);
     while(1){
         //speed check
-        if(playerCpy.spd >= enemy->spd){ //player faster
+        if(player->spd >= enemy->spd){ //player faster
             goto PlayerAction;
-        } else{ //enemy faster, acts first
+        } else{
             goto EnemyAction;
         }
 
         //player actions TODO: allow for expanssion in switch case.
-        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
         PlayerAction:
-        switch(getAction(playerCpy)){
+        switch(getAction(*player)){
             case 1:{ //attack    
-                if((rand() % (45 - enemy->spd + playerCpy.spd + 1)) == 0){
+                if((rand() % (40 - enemy->spd + player->spd + 1)) == 0){
                     printf("You miss your attack!!!\n");
                     firstActionPerformed += 1;
                     goto StatusCheck;
                 }
-                int dmg = ((playerCpy.strn - (enemy->def / 3)) < 0) ? 0 : playerCpy.strn - (enemy->def / 3);
+                int dmg = ((player->strn - (enemy->def / 3)) < 0) ? 0 : player->strn - (enemy->def / 3);
                 printf("You deal %d damage. \n", dmg);
                 enemy->hlth -= dmg;
                 break;
                 }
-            case 2:{ //spells
-                displaySpells(*player);
-                //castSpell(getSpell()); 
-                playerCpy.hlth += 2;  
+            case 2:{ //heal
+                printf("You gain 2 health. \n");
+                player->hlth += 2;   
                 break;
                 }
             case 3:{ //nothing
@@ -271,7 +155,6 @@ void combatPhase(creature* enemy, creature* player){
         firstActionPerformed += 1; //player
         goto StatusCheck;
 
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //enemy actions TODO: expand enemy potential actions
         EnemyAction:
         switch((rand() % 10)){
@@ -280,23 +163,19 @@ void combatPhase(creature* enemy, creature* player){
                 break;
             }
             default:{
-                int dmg = ((enemy->strn - (playerCpy.def / 3)) < 0) ? 0 : enemy->strn - (playerCpy.def / 3);
+                int dmg = ((enemy->strn - (player->def / 3)) < 0) ? 0 : enemy->strn - (player->def / 3);
                 printf("The %s attacks for %d damage.\n", enemy->name, dmg);
-                playerCpy.hlth -= dmg;
+                player->hlth -= dmg;
             }
         }   
         firstActionPerformed += 2;
         goto StatusCheck;
 
-        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //check for health and order of attacks
         StatusCheck:
-        if(playerCpy.hlth <= 0 || enemy->hlth <= 0){
-            player->hlth = playerCpy.hlth;
-            player->mana = playerCpy.mana;
+        if(player->hlth <= 0 || enemy->hlth <= 0){
             break;  //someone is dead, get out of combat
         }
-        //check who acted last
         switch(firstActionPerformed){
             case 1:{
                 goto EnemyAction;
